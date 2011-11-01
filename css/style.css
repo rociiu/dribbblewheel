@@ -1,0 +1,79 @@
+.clear {
+  clear: both;
+}
+body {
+  background: url('../images/black_denim.png');
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #404040;
+}
+#head {
+}
+#head ul {
+  margin: 40px auto 20px;
+  width: 310px;
+}
+#head ul li {
+  display: inline;
+  margin-right: 15px;
+}
+#head ul li a {
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+#head ul li a.active {
+  color: #999;
+}
+#slides {
+  margin-top: 150px;
+}
+#slides .slide {
+  border: 1px solid #ccc;
+  background: #eee;
+  padding: 5px;
+  float: left;
+  margin: 0 10px;
+}
+#slides .slide img {
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+}
+#slides #past_slides, #slides #future_slides {
+  height: 167px;
+  margin-top: 100px;
+  overflow: hidden;
+  opacity: 0.5;
+  float: left;
+}
+#slides #past_slides .slide {
+  float: right;
+}
+#slides #past_slides .slide, #slides #future_slides .slide {
+  padding: 2px;
+}
+#slides #past_slides .slide img.large, #slides #future_slides .slide img.large {
+  display: none;
+}
+#slides #past_slides .slide .info, #slides #future_slides .slide .info {
+  display: none;
+}
+#slides #current_slide {
+  float: left;
+}
+#slides #current_slide .slide {
+  -webkit-box-shadow: 0px 2px 2px #666;
+}
+#slides #current_slide .slide img.small {
+  display: none;
+}
+#slides #future_slides {
+  margin-top: 100px;
+  float: right;
+}
+#slides #future_slides #loading {
+  margin: 70px 0 0 50px;
+}

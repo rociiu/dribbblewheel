@@ -84,7 +84,8 @@ $(function(){
                    comments_count: data['comments_count'],
                    views_count: data['views_count'],
                    player_url: data['player']['url'],
-                   player_avatar_url: data['player']['avatar_url']
+                   player_avatar_url: data['player']['avatar_url'],
+                   short_url: data['short_url']
                });
     }
     
@@ -92,7 +93,7 @@ $(function(){
         var template = '\
         <div class="slide">\
             <img class="small" src="${image_teaser_url}" />\
-            <img class="large" src="${image_url}">\
+            <img class="large" src="${image_url}"  rel="${short_url}">\
             <div class="info">\
                 <div class="dribbble_info">\
                     <p class="title"><span>${title}</span></p>\
@@ -100,7 +101,7 @@ $(function(){
                 </div>\
                 <div class="user_info">\
                     <a href="${player_url}" target="_blank">${player_name}</a>\
-                    <img src="${player_avatar_url}" />\
+                    <img src="${player_avatar_url}"/>\
                 </div>\
             </div>\
         </div>\
@@ -177,4 +178,9 @@ $(function(){
             pop_slide_from_future();
         };
     });
+    
+    $("#current_slide .slide img").live('click', function(event){
+        var link = $(this).attr('rel');
+        window.open(link, '_blank');
+    })
 });

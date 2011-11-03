@@ -47,11 +47,11 @@ $(function(){
     init_slides();
     
     function pop_slide_from_past() {
-        pop_slide('future_slides', 'past_slides');
+        pop_slide('past_slides', 'future_slides');
     }
     
     function pop_slide_from_future() {
-        pop_slide('past_slides', 'future_slides');
+        pop_slide('future_slides', 'past_slides');
     }
     
     function pop_slide(from, to) {
@@ -81,7 +81,10 @@ $(function(){
                    title: data['title'],
                    player_name: data['player']['name'],
                    likes_count: data['likes_count'],
-                   player_url: data['player']['url']
+                   comments_count: data['comments_count'],
+                   views_count: data['views_count'],
+                   player_url: data['player']['url'],
+                   player_avatar_url: data['player']['avatar_url']
                });
     }
     
@@ -91,8 +94,14 @@ $(function(){
             <img class="small" src="${image_teaser_url}" />\
             <img class="large" src="${image_url}">\
             <div class="info">\
-              <p><span>${title}</span> <em>By</em> <a href="${player_url}" target="_blank">${player_name}</a></p>\
-              <p><span>${likes_count} likes</span></p>\
+                <div class="dribbble_info">\
+                    <p class="title"><span>${title}</span></p>\
+                    <p class="stat"><span class="views">${views_count}</span><span class="comments">${comments_count}</span><span class="likes">${likes_count}</span></p>\
+                </div>\
+                <div class="user_info">\
+                    <a href="${player_url}" target="_blank">${player_name}</a>\
+                    <img src="${player_avatar_url}" />\
+                </div>\
             </div>\
         </div>\
         ';
@@ -128,11 +137,11 @@ $(function(){
     $(document).keydown(function(event) {
         // right arrow
         if (event.keyCode == 39) {
-            pop_slide_from_past();
+            pop_slide_from_future();
         }
         //left arrow 
         if (event.keyCode == 37) {
-            pop_slide_from_future();
+            pop_slide_from_past();
         }
     });
     
@@ -153,7 +162,19 @@ $(function(){
         reset_dw_mode($(this).attr('rel'));
     });
     
-    $("#past_slides .slide img, #future_slides .slide img").live('click', function(event){
-        
+    $("#past_slides .slide img").live('click', function(event){
+        var slide = $(this).parent();
+        var index = $(slide).index();
+        for (var i=0; i < index + 1; i++) {
+            pop_slide_from_past();
+        };
+    });
+    
+    $("#future_slides .slide img").live('click', function(event){
+        var slide = $(this).parent();
+        var index = $(slide).index();
+        for (var i=0; i < index + 1; i++) {
+            pop_slide_from_future();
+        };
     });
 });

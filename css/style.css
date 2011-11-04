@@ -42,6 +42,9 @@ body {
   border: 1px solid #e5e5e5;
   cursor: pointer;
 }
+#slides .slide .info {
+  width: 402px;
+}
 #slides .slide .dribbble_info {
   float: left;
   width: 60%;
